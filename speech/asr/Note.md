@@ -26,12 +26,12 @@ Left context is not limited. Right context includes 1 frame. The upper layers, t
 
 ### 3. Robust wav2vec 2.0: Analyzing Domain Shift in Self-Supervised Pre-Training
 [Interspeech2021] [Link](https://www.isca-speech.org/archive/pdfs/interspeech_2021/hsu21_interspeech.pdf)
-20/05/2021  
-Purpose:  
+23/05/2021  
+_**Purpose**_:  
 What if domain of unlabelled data trained for W2v2 differ from labelled data for finetuning ASR.  
 => Experiments show that using target domain data during pre-training leads to large performance improvements across a variety of setups.  
 => Pre-training on multiple domains improves generalization performance on domains not seen during training.  
-Result:  
+**_Result_**:  
 1. Does adding in-domain pre-training data help?  yes
 2. Does adding pre-training data help if out-of-domain? Mix, does not always help
 3. Does pre-training on diverse data improve robustness? yes
@@ -42,3 +42,24 @@ unlabeled data leads consistently to better performance" -> "unlabeled data lead
 7. Larger model, more pre-training and fine-tuning data: In general, bigger size brings better performance
 
 => This paper has good analysis about strategy to train/fine-tune ASR with in/out domain
+
+### 4. Wav2vec-C: A Self-supervised Model for Speech Representation Learning
+[Interspeech2021] [Link](https://www.isca-speech.org/archive/pdfs/interspeech_2021/sadhu21_interspeech.pdf)  
+23/05/2021  
+_**Purpose**_: 
+- Introduce wav2vec-C to enhance the quality of learning code book and focus on modifying learnt representation layer.
+- Limit model size to facilitate low-latency production level ASR models.
+- Compare different vector quantization frameworks.  
+
+_**Content**_:  
+<img src="../../img/sadhu21_interspeech_fig1.png" width="400"  />  
+- Encoder network _f()_ consists of 3 layers LSTM
+- Vector quantization module _q_ is the same as original w2v2
+- Additional masking by SpecAug
+- Context network _g()_: 5 transformers layers
+- Consistency network _r()_ will reconstruct the quantized encoding Z_hat: 3 layers LSTM that maps the Z^ to S one by one. Target loss is to minimize L2 normed distance between S and X.  
+
+_**Result**_:
+This method seems work better with Gumbel Softmax than K-Mean.
+
+=> Does not see clearly the improvement on WER of any testset. Does not mention to the low latency model by benchmarking speed.
