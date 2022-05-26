@@ -26,7 +26,7 @@ Left context is not limited. Right context includes 1 frame. The upper layers, t
 
 ### 3. Robust wav2vec 2.0: Analyzing Domain Shift in Self-Supervised Pre-Training
 [Interspeech2021] [Link](https://www.isca-speech.org/archive/pdfs/interspeech_2021/hsu21_interspeech.pdf)
-23/05/2021  
+23/05/2022  
 _**Purpose**_:  
 What if domain of unlabelled data trained for W2v2 differ from labelled data for finetuning ASR.  
 => Experiments show that using target domain data during pre-training leads to large performance improvements across a variety of setups.  
@@ -45,7 +45,7 @@ unlabeled data leads consistently to better performance" -> "unlabeled data lead
 
 ### 4. Wav2vec-C: A Self-supervised Model for Speech Representation Learning
 [Interspeech2021] [Link](https://www.isca-speech.org/archive/pdfs/interspeech_2021/sadhu21_interspeech.pdf)  
-23/05/2021  
+23/05/2022  
 _**Purpose**_: 
 - Introduce wav2vec-C to enhance the quality of learning code book and focus on modifying learnt representation layer.
 - Limit model size to facilitate low-latency production level ASR models.
@@ -63,3 +63,36 @@ _**Result**_:
 This method seems work better with Gumbel Softmax than K-Mean.
 
 => Does not see clearly the improvement on WER of any testset. Does not mention to the low latency model by benchmarking speed.
+
+### 5. Super-Human Performance in Online Low-latency Recognition of Conversational Speech  
+[Interspeech2021] [Link](https://www.isca-speech.org/archive/pdfs/interspeech_2021/nguyen21c_interspeech.pdf)  
+24/05/2022  
+**_Purpose_**:  
+Creat an ASR model which address both accuracy and latency problem. WER around 5% on SWB (Switchboard) conversational benchmark, 1s behind speaker's speech.  
+Propose a novel low latency incremental inference approach.  
+
+**_Content_**:  
+<img src="../../img/nguyen21c_interspeech_fig1.png" width="400"  />  
+Stability detection is the key to make the system work in the incremental manner and to produce low latency output. 
+Taking advantage of ensembling inference models. The hypothesis will go into stability detection. This module check if the token predicted is stable enough and set it as a result. Then, the other tokens in hypothesises go back into Ensemble Inference with more input. 
+
+### 6. Online Compressive Transformer for End-to-End Speech Recognition
+[Interspeech2021] [Link](https://www.isca-speech.org/archive/pdfs/interspeech_2021/leong21_interspeech.pdf)  
+26/05/2022  
+**_Purpose_**:  
+An online compressive transformer (OCT) aims to generate immediate transcription for each audio chunk while the comparable performance with offline ASR can still be achieved.  
+
+**_Note_**:  
+- [RNN-T](https://arxiv.org/pdf/1211.3711.pdf): Basically, there will be two networks: the encoder and the prediction network.  
+<img src="../../img/leong21_interspeech_note1.png" width="250"  />  
+- [Compressive Transformer](https://arxiv.org/pdf/1911.05507.pdf): an attentive sequence model which
+compresses past memories for long-range sequence learning.  
+- [Implementation](https://github.com/lucidrains/compressive-transformer-pytorch)  
+
+**_Content_**:  
+<img src="../../img/leong21_interspeech_fig1.png" width="400"  />  
+OCT has a performance relatively as equal as Transformer vanilla.  
+<img src="../../img/leong21_interspeech_fig2.png" width="400"  />  
+The result seems better than [Sync-transformer](https://arxiv.org/abs/1912.02958) at beam search = 5.
+
+
