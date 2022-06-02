@@ -1,6 +1,6 @@
 ### 1. End-to-End Spelling Correction Conditioned on Acoustic Feature for Code-switching Speech Recognition
 [Interspeech2021] [Link](https://www.isca-speech.org/archive/pdfs/interspeech_2021/zhang21d_interspeech.pdf)  
-19/05/2022  
+19-May-2022  
 **_Note_**:  
 Code switching (CS) definition: " In code-switching, multiple languages are freely interchanged within a single sentence or between sentences."  
 **_Dataset_**: ASRU 2019 Mandarin-English Code-Switching Speech Recognition Challenge at [link](https://arxiv.org/pdf/2007.05916.pdf).  
@@ -15,7 +15,7 @@ _**Content**_: Create a E2E spelling correction module, which is the post proces
 
 ### 2. Improving Streaming Transformer Based ASR Under a Framework of Self-supervised Learning
 [Interspeech2021] [Link](https://www.isca-speech.org/archive/pdfs/interspeech_2021/cao21b_interspeech.pdf)  
-19/05/2022  
+19-May-2022  
 **_Purpose_**:  
 SSL ASR architectures usually large and include transformer. Multi head attention (MHA) has to look at all the input before computing, therefore this architecture is hard to use as streaming.  
 W2v2 for ASR has very good quality. How to turn it into streaming architecture for better speed of inferring? Will the performance be kept or only small reduction of accuracy?  
@@ -26,7 +26,7 @@ Left context is not limited. Right context includes 1 frame. The upper layers, t
 
 ### 3. Robust wav2vec 2.0: Analyzing Domain Shift in Self-Supervised Pre-Training
 [Interspeech2021] [Link](https://www.isca-speech.org/archive/pdfs/interspeech_2021/hsu21_interspeech.pdf)
-23/05/2022  
+23-May-2022  
 _**Purpose**_:  
 What if domain of unlabelled data trained for W2v2 differ from labelled data for finetuning ASR.  
 => Experiments show that using target domain data during pre-training leads to large performance improvements across a variety of setups.  
@@ -45,7 +45,7 @@ unlabeled data leads consistently to better performance" -> "unlabeled data lead
 
 ### 4. Wav2vec-C: A Self-supervised Model for Speech Representation Learning
 [Interspeech2021] [Link](https://www.isca-speech.org/archive/pdfs/interspeech_2021/sadhu21_interspeech.pdf)  
-23/05/2022  
+23-May-2022  
 _**Purpose**_: 
 - Introduce wav2vec-C to enhance the quality of learning code book and focus on modifying learnt representation layer.
 - Limit model size to facilitate low-latency production level ASR models.
@@ -66,7 +66,7 @@ This method seems work better with Gumbel Softmax than K-Mean.
 
 ### 5. Super-Human Performance in Online Low-latency Recognition of Conversational Speech  
 [Interspeech2021] [Link](https://www.isca-speech.org/archive/pdfs/interspeech_2021/nguyen21c_interspeech.pdf)  
-24/05/2022  
+24-May-2022  
 **_Purpose_**:  
 Creat an ASR model which address both accuracy and latency problem. WER around 5% on SWB (Switchboard) conversational benchmark, 1s behind speaker's speech.  
 Propose a novel low latency incremental inference approach.  
@@ -78,7 +78,7 @@ Taking advantage of ensembling inference models. The hypothesis will go into sta
 
 ### 6. Online Compressive Transformer for End-to-End Speech Recognition
 [Interspeech2021] [Link](https://www.isca-speech.org/archive/pdfs/interspeech_2021/leong21_interspeech.pdf)  
-26/05/2022  
+26-May-2022  
 **_Purpose_**:  
 An online compressive transformer (OCT) aims to generate immediate transcription for each audio chunk while the comparable performance with offline ASR can still be achieved.  
 
@@ -95,4 +95,14 @@ OCT has a performance relatively as equal as Transformer vanilla.
 <img src="../../img/leong21_interspeech_fig2.png" width="400"  />  
 The result seems better than [Sync-transformer](https://arxiv.org/abs/1912.02958) at beam search = 5.
 
+### 7. Transformer-based ASR Incorporating Time-reduction Layer and Fine-tuning with Self-Knowledge Distillation
+[Interspeech2021][Link](https://www.isca-speech.org/archive/pdfs/interspeech_2021/haidar21_interspeech.pdf)  
+02-June-2022  
+**_Purpose_**:  
+- Propose a Transformer-based ASR model with the time-reduction layer: incorporate time-reduction layer inside Encoders in addition to traditional sub-sampling methods to reduce input features.  
+- Can both improve the performance and reduce time training/inferring.
+- Achieved SOTA result on Librispeech (w/o external data) with only 30M params model.  
 
+**_Method_**:  
+- Time reduction (TR) layer can be set after the first Encoder before go to second Encoder.
+-  Basically, TR will concatenate two adjacent time frames
