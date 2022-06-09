@@ -106,3 +106,19 @@ The result seems better than [Sync-transformer](https://arxiv.org/abs/1912.02958
 **_Method_**:  
 - Time reduction (TR) layer can be set after the first Encoder before go to second Encoder.
 -  Basically, TR will concatenate two adjacent time frames
+
+### 8. Toward a realistic model of speech processing in the brain with self-supervised learning  
+[Preprint][Link](https://arxiv.org/pdf/2206.01685.pdf)  
+09-June-2022  
+**_Purpose_**:  
+- Prove that Wav2vec2.0 learns brain-like representation
+- Its functional hierarchy aligns with the cortical hierarchy of speech processing
+- Wav2Vec 2.0 learns sound-generic, speech-specific and language-specific representations similar
+to those of the prefrontal and temporal cortices.  
+- Confirm the similarity of this specialization with the behavior of 386 additional participants.  
+=> In summary, this research demonstrates that how similar the W2V2 to the human brain.  
+
+_**Content**_:  
+<img src="../../img/2206.01685_fig1.png" width="500" />  
+They assess the similarity between the activations of the model X and brain activity Y with a standard encoding model W. Then compare W(X) with Y by Pearson correlation R.  
+_**C**_. illustrates the comparison between X and Y.
