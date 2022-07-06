@@ -121,4 +121,32 @@ to those of the prefrontal and temporal cortices.
 _**Content**_:  
 <img src="../../img/2206.01685_fig1.png" width="500" />  
 They assess the similarity between the activations of the model X and brain activity Y with a standard encoding model W. Then compare W(X) with Y by Pearson correlation R.  
-_**C**_. illustrates the comparison between X and Y.
+_**C**_. illustrates the comparison between X and Y.  
+
+### 9. A Comparative Study on Neural Architectures and Training Methods for Japanese Speech Recognition  
+[ArXiv][Link](https://arxiv.org/pdf/2106.05111.pdf)  
+**_Purpose_**:  
+- Investigate some E2E SOTA methods on training ASR for Japanese
+- The best result belongs to Conformer transducer architecture.  
+Experiment:  
+- Use CSJ corpuse (581 hours), separated data (train/dev) by protocol of ESPnet
+
+### 10. Tiny Transformers for Environmental Sound Classification at the Edge  
+[ArXiv][Link](https://arxiv.org/pdf/2103.12157.pdf)  
+**_Purpose_**:  
+- Environmental Sound Classificatioln (ESC) on the edge
+- What type of feature extraction techniques can work (and how effectively is it) with Transformer?  
+- Results show that a BERTbased Transformer, trained on Mel spectrograms, can outperform  a CNN using 99.85% fewer parameters
+
+**_Content_**:
+Feature extraction for making input before go into transformer:
+- Speech signal is continous variable, unlike text, which can be turned into discrete variable by using embedding layer. Transformer's input data requires 2 dimensional input, but raw speech signal is only 1d data. Therefore, this paper demonstrates different ways for extracting speech signal feature:
+1. Amplitude reshaping: naive way, just reshape 1d speech signal into 2d.
+2. Curve tokenization: based on the intuition that there may exists a small number of "curves" that can describe short sequences of audio signals.
+3. VQ-VAE: to produce compressed "codes" from codebooks to represent audio during training process.
+4. MFCC: Config = 128 mels, a hop length of 512, a window length of 1024, and number of FFTs of 1024.
+5. Concat MFCC, GFCC, CQT, Chromagram
+6. Mel spectrogram: is able to downsampling without affect to the accuracy
+
+The paper demonstrated that MFCC/Mel spectrogram can be feature extractors to work with Transformer. However this problem is classification. I am personally looking for an architecture that make MFCC/Mel + Transformer -> ASR.  
+In conclusion, MFCC + CNN in this paper is the most lightweight model version with high accuracy that can work with edge device.
